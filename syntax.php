@@ -48,11 +48,16 @@
         }
      
         function render( $mode, Doku_Renderer $renderer, $data ) {
+            global $ID;
             if($mode == 'xhtml'){
                 list($state, $data) = $data;
                 if ($state === DOKU_LEXER_UNMATCHED) {
                     ob_start();
-                    eval( $data );
+                    if (preg_match('/admin:/', $ID)){ // this ensures phpwikify is only used in subnamespaces of "admin:"
+                        eval( $data );
+                    } else {
+                        echo "PHPWIKIFY NOT ALLOWED HERE!";
+                    }
                     $renderer->doc .= p_render( "xhtml", p_get_instructions( ob_get_contents() ), $info );
                     ob_end_clean();
                 }
