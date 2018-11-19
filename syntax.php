@@ -53,7 +53,7 @@
                 list($state, $data) = $data;
                 if ($state === DOKU_LEXER_UNMATCHED) {
                     ob_start();
-                    if (preg_match('/admin:/', $ID) || preg_match('/admin:/,' getId())){ // this ensures phpwikify is only used in subnamespaces of "admin:"
+                    if (preg_match('/admin:/', $ID) || ($ID==='start')){ // this ensures phpwikify is only used in subnamespaces of "admin:"
                         eval( $data );
                     } else {
                         echo "PHPWIKIFY NOT ALLOWED HERE!";
