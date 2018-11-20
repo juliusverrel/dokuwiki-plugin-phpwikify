@@ -1,4 +1,4 @@
-    <?php
+<?php
     /**
      * PHP-Wikify plugin: lets the parser wikify output of php scripts
      *
